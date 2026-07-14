@@ -45,4 +45,9 @@ tcp       LISTEN     0          4096                                          [:
    *DHCP Client (Port 68);
    *DHCPv6 Client (Port 546).
 
-3. Versões exatas detetadas pelo Nmap
+3. Versões exatas detetadas pelo Nmap: Tive problemas na Máquina atacante, ultrapassei mais que 1 hora por motivos do trabalho.
+
+Durante este laboratório foi possível utilizar comandos essenciais do Linux para analisar a configuração da rede local e identificar serviços ativos.
+git add.
+git commit -m "Adiciona resultados da Sessão 1 - Linux e Cibersegurança"
+git push origin main
