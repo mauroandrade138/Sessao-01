@@ -37,17 +37,65 @@ tcp       LISTEN     0          4096                                            
 tcp       LISTEN     0          4096                                             *:40305                      *:*                    
 tcp       LISTEN     0          4096                                          [::]:22                      [::]:*  
 
-1. Número de portas abertas identiﬁcadas: 14 portas
+root@ip-10-128-185-94:~# nmap -sV -sC 10.128.150.156
+Starting Nmap 7.94SVN ( https://nmap.org ) at 2026-07-18 13:58 UTC
+Nmap scan report for ip-10-128-150-156.eu-west-3.compute.internal (10.128.150.156)
+Host is up (0.00033s latency).
+Not shown: 995 filtered tcp ports (no-response)
+PORT     STATE SERVICE       VERSION
+21/tcp   open  ftp           FileZilla ftpd
+| ftp-syst: 
+|_  SYST: UNIX emulated by FileZilla
+| ftp-anon: Anonymous FTP login allowed (FTP code 230)
+|_Can't get directory listing: TIMEOUT
+53/tcp   open  domain        Simple DNS Plus
+80/tcp   open  http          Microsoft IIS httpd 10.0
+|_http-server-header: Microsoft-IIS/10.0
+|_http-title: IIS Windows Server
+| http-methods: 
+|_  Potentially risky methods: TRACE
+135/tcp  open  msrpc         Microsoft Windows RPC
+3389/tcp open  ms-wbt-server Microsoft Terminal Services
+|_ssl-date: 2026-07-18T13:59:41+00:00; -1s from scanner time.
+| ssl-cert: Subject: commonName=win-scan
+| Not valid before: 2026-07-17T13:50:52
+|_Not valid after:  2027-01-16T13:50:52
+| rdp-ntlm-info: 
+|   Target_Name: WIN-SCAN
+|   NetBIOS_Domain_Name: WIN-SCAN
+|   NetBIOS_Computer_Name: WIN-SCAN
+|   DNS_Domain_Name: win-scan
+|   DNS_Computer_Name: win-scan
+|   Product_Version: 10.0.17763
+|_  System_Time: 2026-07-18T13:59:11+00:00
+MAC Address: 06:5A:C3:A1:66:15 (Unknown)
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+|_clock-skew: mean: -1s, deviation: 0s, median: -1s
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 54.37 seconds
+
+1. Número de portas abertas identiﬁcadas: 5 portas
    
 2. Serviços em execução em cada porta:
-   *DNS (Port 53) - systemd-resolved;
-   *SSH (Port 22) - OpenSSH;
-   *DHCP Client (Port 68);
-   *DHCPv6 Client (Port 546).
+ PORT    SERVICE       
+  21      ftp
+  53      domain
+  80      http
+  135     msrpc
+  3389    ms-wbt-server
 
-3. Versões exatas detetadas pelo Nmap: Tive problemas na Máquina atacante, ultrapassei mais que 1 hora por motivos do trabalho.
+4. Versões exatas detetadas pelo Nmap: 
+PORT          VERSION
+21/tcp     FileZilla ftpd
+53/tcp     Simple DNS Plus
+80/tcp     Microsoft IIS httpd 10.0
+135/tcp    Microsoft Windows RPC
+3389/tcp   Microsoft Terminal Services
 
-4. Output completo do comando ip a e ss -tuln do ambiente local:
+5. Output completo do comando ip a  e  ss -tuln do ambiente local:
    <img width="939" height="290" alt="Captura de ecrã 2026-07-14 155640" src="https://github.com/user-attachments/assets/e41caa53-ef54-4726-8ed9-0db5113228cf" />
 <img width="936" height="294" alt="Captura de ecrã 2026-07-14 155621" src="https://github.com/user-attachments/assets/bcaac3c4-bc8b-49ed-a9db-24e66a9d1000" />
 
